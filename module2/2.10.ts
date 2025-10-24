@@ -1,31 +1,30 @@
 {
-    //mapped type
-    const arrOfNumbers: number[] = [1, 4, 5];
+  //mapped type
+  const arrOfNumbers: number[] = [1, 4, 5];
 
-    // const arrOfStrings : string[] = ['1','4','5']
-    const arrOfStrings: string[] = arrOfNumbers.map((number) =>
-        number.toString()
-      );
-      console.log(arrOfStrings);
+  // const arrOfStrings : string[] = ['1','4','5']
+  const arrOfStrings: string[] = arrOfNumbers.map((number) =>
+    number.toString()
+  );
+  console.log(arrOfStrings);
 
-      type AreaNumber = {
-        height: number;
-        width: number;
-      };
+  type AreaNumber = {
+    height: number;
+    width: number;
+  };
 
+  type Height = AreaNumber["height"]; // look up type
+  //     type AreaString = {
+  //     height: string;
+  //     width: string
+  //   }
 
-      type Height = AreaNumber["height"]; // look up type
-//     type AreaString = {
-//     height: string;
-//     width: string
-//   }
-
-// keyof AreaNumber => "height"|"width"
+  // keyof AreaNumber => "height"|"width"
 
   // T => {height:string;width:number}
   // key => T["width"]
   type AreaString<T> = {
-    [key in keyof T]: T[key];
+    [key in keyof T]: T[key]; // T[key] is look up type aikhne looping korbe akbar height ar jonno onnobar width er jonno
   };
 
   const area1: AreaString<{ height: string; width: number }> = {
@@ -33,6 +32,5 @@
     width: 50,
   };
 
-
-    //
+  //
 }
