@@ -104,6 +104,7 @@ If you'd like to contribute or suggest improvements, feel free to:
 #### Juiena Parvin
 
 Junior Front-End Web Developer
+
 Passionate about learning and sharing TypeScript & modern web technologies.
 
 ## License
