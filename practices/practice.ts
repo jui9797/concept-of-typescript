@@ -23,4 +23,14 @@
 
   console.log(user.name);
   // Jui
+
+  // Optional properties
+  type Car = {
+    brand: string;
+    model: string;
+    color?: string;
+  };
+
+  const car1: Car = { brand: "Toyota", model: "Corolla" };
+  const car2: Car = { brand: "Tesla", model: "X", color: "Black" };
 }
