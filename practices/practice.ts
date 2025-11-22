@@ -33,4 +33,23 @@
 
   const car1: Car = { brand: "Toyota", model: "Corolla" };
   const car2: Car = { brand: "Tesla", model: "X", color: "Black" };
+
+  //Create a function that accepts a union type
+
+  function printId(id: string | number) {
+    console.log("ID:", id);
+  }
+
+  printId(101);
+  printId("A-22");
+
+  // Narrowing using typeof
+
+  function process(value: string | number) {
+    if (typeof value === "string") {
+      return value.length;
+    } else {
+      return value * 2;
+    }
+  }
 }
