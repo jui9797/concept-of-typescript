@@ -52,4 +52,13 @@
       return value * 2;
     }
   }
+
+  // Generic function that returns the same value
+
+  function identity<T>(value: T): T {
+    return value;
+  }
+
+  const a = identity<string>("Hello");
+  const b = identity<number>(100);
 }
