@@ -61,4 +61,11 @@
 
   const a = identity<string>("Hello");
   const b = identity<number>(100);
+
+  function firstElement<T>(arr: T[]): T {
+    return arr[0];
+  }
+
+  console.log(firstElement([10, 20, 30]));
+  console.log(firstElement(["a", "b", "c"]));
 }
