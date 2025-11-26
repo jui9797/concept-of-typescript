@@ -61,4 +61,21 @@
 
   const a = identity<string>("Hello");
   const b = identity<number>(100);
+
+  // Interface with method
+
+  interface BankAccount {
+    balance: number;
+    deposit(amount: number): void;
+  }
+
+  const account: BankAccount = {
+    balance: 1000,
+    deposit(amount) {
+      this.balance += amount;
+    },
+  };
+
+  account.deposit(500);
+  console.log(account.balance); // 1500
 }
