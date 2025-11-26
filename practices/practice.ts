@@ -59,7 +59,7 @@
     return value;
   }
 
-  const a = identity<string>("Hello");
+  const a = identity<string>("Typescript");
   const b = identity<number>(100);
 
   // Interface with method
@@ -78,4 +78,19 @@
 
   account.deposit(500);
   console.log(account.balance); // 1500
+
+  // Using readonly
+
+  type Student = {
+    readonly id: number;
+    name: string;
+  };
+
+  const s1: Student = { id: 2, name: "Jannat" };
+  // s1.id = 20;  error
+
+  // Tuple type
+  // type Point = [number, number];
+  // const p1: Point = [10, 20];
+  // console.log(`X: ${p1[0]}, Y: ${p1[1]}`);
 }
