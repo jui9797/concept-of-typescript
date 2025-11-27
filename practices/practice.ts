@@ -90,7 +90,7 @@
   // s1.id = 20;  error
 
   // Tuple type
-  // type Point = [number, number];
-  // const p1: Point = [10, 20];
-  // console.log(`X: ${p1[0]}, Y: ${p1[1]}`);
+  type Point = [number, number];
+  const p1: Point = [10, 20];
+  console.log(`X: ${p1[0]}, Y: ${p1[1]}`);
 }
