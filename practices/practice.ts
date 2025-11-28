@@ -111,4 +111,13 @@
 
   const p2 = new Person("Jui", 20);
   p2.greet();
+
+  // Generic with Constraints
+
+  function logLength<T extends { length: number }>(value: T) {
+    return value.length;
+  }
+
+  console.log(logLength("Hello"));
+  console.log(logLength([1, 2, 3]));
 }
