@@ -93,4 +93,22 @@
   type Point = [number, number];
   const p1: Point = [10, 20];
   console.log(`X: ${p1[0]}, Y: ${p1[1]}`);
+
+  // Class + Access Modifiers
+  class Person {
+    public name: string;
+    private age: number;
+
+    constructor(name: string, age: number) {
+      this.name = name;
+      this.age = age;
+    }
+
+    greet() {
+      console.log(`Hello, my name is ${this.name}`);
+    }
+  }
+
+  const p2 = new Person("Jui", 20);
+  p2.greet();
 }
