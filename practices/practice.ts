@@ -132,6 +132,32 @@
   type OptionalUser = Partial<User>;
 
   const u: OptionalUser = {
-    name: "Jui",
+    name: "Juii
+
+
+
+
   };
+
+// Pick specific propertiestype Product = {
+  id: number;
+  name: string;
+  price: number;
+  stock: number;
+};
+
+type BasicProduct = Pick<Product, "name" | "price">;
+
+const p: BasicProduct = {
+  name: "Laptop",
+  price: 50000,
+};
+
+
+
+
+
+
+
+
 }
