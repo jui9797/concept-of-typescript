@@ -120,4 +120,18 @@
 
   console.log(logLength("Hello"));
   console.log(logLength([1, 2, 3]));
+
+  // Make all properties optional (using utility types)
+
+  type User = {
+    name: string;
+    age: number;
+    email: string;
+  };
+
+  type OptionalUser = Partial<User>;
+
+  const u: OptionalUser = {
+    name: "Jui",
+  };
 }
