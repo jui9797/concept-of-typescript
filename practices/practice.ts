@@ -149,4 +149,11 @@
     name: "Laptop",
     price: 50000,
   };
+
+  //Record Utility Type
+
+  const scores: Record<string, number> = {
+    Jui: 95,
+    Rahim: 88,
+  };
 }
