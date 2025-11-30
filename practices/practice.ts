@@ -123,41 +123,30 @@
 
   // Make all properties optional (using utility types)
 
-  type User = {
+  type User2 = {
     name: string;
     age: number;
     email: string;
   };
 
-  type OptionalUser = Partial<User>;
+  type OptionalUser = Partial<User2>;
 
   const u: OptionalUser = {
-    name: "Juii
-
-
-
-
+    name: "Jui",
   };
 
-// Pick specific propertiestype Product = {
-  id: number;
-  name: string;
-  price: number;
-  stock: number;
-};
+  // Pick specific properties
+  type Product = {
+    id: number;
+    name: string;
+    price: number;
+    stock: number;
+  };
 
-type BasicProduct = Pick<Product, "name" | "price">;
+  type BasicProduct = Pick<Product, "name" | "price">;
 
-const p: BasicProduct = {
-  name: "Laptop",
-  price: 50000,
-};
-
-
-
-
-
-
-
-
+  const p: BasicProduct = {
+    name: "Laptop",
+    price: 50000,
+  };
 }
