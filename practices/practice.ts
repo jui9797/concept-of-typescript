@@ -170,4 +170,8 @@
   }
 
   printStatus(OrderStatus.SHIPPED);
+
+  // Tuple type
+
+  const student: [string, number] = ["Jui", 20];
 }
