@@ -156,4 +156,18 @@
     Jui: 95,
     Rahim: 88,
   };
+
+  //Enum Example
+
+  enum OrderStatus {
+    PENDING = "pending",
+    SHIPPED = "shipped",
+    DELIVERED = "delivered",
+  }
+
+  function printStatus(status: OrderStatus) {
+    console.log("Status:", status);
+  }
+
+  printStatus(OrderStatus.SHIPPED);
 }
