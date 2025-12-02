@@ -185,4 +185,23 @@
 
   console.log(combine(10, 20)); // 30
   console.log(combine("Hello ", "World")); // Hello World
+
+  // Class with inheritance
+
+  class Animal {
+    constructor(public name: string) {}
+
+    sound() {
+      console.log("Some sound...");
+    }
+  }
+
+  class Dog extends Animal {
+    sound() {
+      console.log("Woof!");
+    }
+  }
+
+  const d = new Dog("Tommy");
+  d.sound();
 }
