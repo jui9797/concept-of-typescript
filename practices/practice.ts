@@ -204,4 +204,10 @@
 
   const d = new Dog("Tommy");
   d.sound();
+
+  // Readonly Array
+
+  const numbers: readonly number[] = [10, 20, 30];
+
+  // numbers.push(40); ❌ error
 }
