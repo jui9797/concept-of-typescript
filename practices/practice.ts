@@ -209,5 +209,20 @@
 
   const numbers: readonly number[] = [10, 20, 30];
 
+  // numbers.push(40); ❌ errors
+
+  // Type Narrowing With in Operator const numbers: readonly number[] = [10, 20, 30];
+
   // numbers.push(40); ❌ error
+
+  type Student = { name: string; class: number };
+  type Employee = { name: string; salary: number };
+
+  function check(obj: Student | Employee) {
+    if ("salary" in obj) {
+      console.log("Employee Salary:", obj.salary);
+    } else {
+      console.log("Student Class:", obj.class);
+    }
+  }
 }
