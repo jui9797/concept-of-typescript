@@ -239,4 +239,36 @@
       console.log("Not a string");
     }
   }
+
+  // Discriminated Unionfunction isString(value: unknown): value is string {
+  return typeof value === "string";
+}
+
+function test(v: unknown) {
+  if (isString(v)) {
+    console.log(v.toUpperCase());
+  } else {
+    console.log("Not a string");
+  }
+  type Circle = {
+    kind: "circle";
+    radius: number;
+  };
+
+  type Rectangle = {
+    kind: "rectangle";
+    width: number;
+    height: number;
+  };
+
+  type Shape = Circle | Rectangle;
+
+  function area(shape: Shape) {
+    switch (shape.kind) {
+      case "circle":
+        return Math.PI * shape.radius * shape.radius;
+      case "rectangle":
+        return shape.width * shape.height;
+    }
+  }
 }
