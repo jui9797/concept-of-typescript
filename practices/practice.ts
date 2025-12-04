@@ -215,14 +215,28 @@
 
   // numbers.push(40); ❌ error
 
-  type Student = { name: string; class: number };
+  type Student3 = { name: string; class: number };
   type Employee = { name: string; salary: number };
 
-  function check(obj: Student | Employee) {
+  function check(obj: Student3 | Employee) {
     if ("salary" in obj) {
       console.log("Employee Salary:", obj.salary);
     } else {
       console.log("Student Class:", obj.class);
+    }
+  }
+
+  // Create a Custom Type Guard
+
+  function isString(value: unknown): value is string {
+    return typeof value === "string";
+  }
+
+  function test(v: unknown) {
+    if (isString(v)) {
+      console.log(v.toUpperCase());
+    } else {
+      console.log("Not a string");
     }
   }
 }
