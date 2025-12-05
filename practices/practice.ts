@@ -209,11 +209,7 @@
 
   const numbers: readonly number[] = [10, 20, 30];
 
-  // numbers.push(40); ❌ errors
-
   // Type Narrowing With in Operator const numbers: readonly number[] = [10, 20, 30];
-
-  // numbers.push(40); ❌ error
 
   type Student3 = { name: string; class: number };
   type Employee = { name: string; salary: number };
@@ -239,9 +235,6 @@
       console.log("Not a string");
     }
   }
-
-  // Discriminated Unionfunction isString(value: unknown): value is string {
-  return typeof value === "string";
 }
 
 function test(v: unknown) {
@@ -250,6 +243,8 @@ function test(v: unknown) {
   } else {
     console.log("Not a string");
   }
+
+  //Discriminated Union
   type Circle = {
     kind: "circle";
     radius: number;
@@ -271,4 +266,20 @@ function test(v: unknown) {
         return shape.width * shape.height;
     }
   }
+
+  // Mapped Type – Make all properties readonly
+
+  type ReadonlyAll<T> = {
+    readonly [K in keyof T]: T[K];
+  };
+
+  type Person = {
+    name: string;
+    age: number;
+  };
+
+  const p: ReadonlyAll<Person> = {
+    name: "Jui",
+    age: 20,
+  };
 }
