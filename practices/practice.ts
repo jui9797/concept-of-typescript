@@ -282,4 +282,17 @@ function test(v: unknown) {
     name: "Jui",
     age: 20,
   };
+
+  //keyof and Index Signature
+
+  function getValue<T, K extends keyof T>(obj: T, key: K) {
+    return obj[key];
+  }
+
+  const student = {
+    name: "Hasan",
+    age: 22,
+  };
+
+  console.log(getValue(student, "name"));
 }
