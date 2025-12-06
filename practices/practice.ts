@@ -307,4 +307,20 @@ function test(v: unknown) {
     name: "Jui",
     email: "jui@mail.com",
   };
+
+  //Optional Chaining + Nullish Coalescing
+
+  type Employee = {
+    name: string;
+    address?: {
+      city?: string;
+    };
+  };
+
+  const emp: Employee = {
+    name: "Jui",
+  };
+
+  const city = emp.address?.city ?? "Unknown";
+  console.log(city);
 }
