@@ -295,4 +295,16 @@ function test(v: unknown) {
   };
 
   console.log(getValue(student, "name"));
+
+  // Intersection Types
+
+  type Profile = { name: string };
+  type Login = { email: string };
+
+  type User = Profile & Login;
+
+  const u: User = {
+    name: "Jui",
+    email: "jui@mail.com",
+  };
 }
