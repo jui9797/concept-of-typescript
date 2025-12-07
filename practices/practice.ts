@@ -333,4 +333,11 @@ function test(v: unknown) {
   }
 
   fetchData().then((res) => console.log(res));
+
+  //Type-level Function
+
+  type ElementType<T> = T extends (infer U)[] ? U : T;
+
+  type A = ElementType<number[]>; // number
+  type B = ElementType<string>; // string
 }
