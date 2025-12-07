@@ -323,4 +323,14 @@ function test(v: unknown) {
 
   const city = emp.address?.city ?? "Unknown";
   console.log(city);
+
+  // Promise with TypeScript
+
+  function fetchData(): Promise<string> {
+    return new Promise((resolve) => {
+      setTimeout(() => resolve("Data loaded"), 1000);
+    });
+  }
+
+  fetchData().then((res) => console.log(res));
 }
