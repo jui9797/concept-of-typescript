@@ -340,4 +340,15 @@ function test(v: unknown) {
 
   type A = ElementType<number[]>; // number
   type B = ElementType<string>; // string
+
+  //Infer return type of a function
+
+  function getUser() {
+    return {
+      id: 1,
+      name: "Jui",
+      skills: ["JS, TS", "React"],
+    };
+  }
+  type ReturnTypeOfGetUser = ReturnType<typeof getUser>;
 }
