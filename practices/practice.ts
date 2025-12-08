@@ -351,4 +351,18 @@ function test(v: unknown) {
     };
   }
   type ReturnTypeOfGetUser = ReturnType<typeof getUser>;
+
+  //Required + Partial Mix
+
+  type Post = {
+    title?: string;
+    body?: string;
+    author?: string;
+  };
+
+  type RequiredTitle<T> = T & { title: string };
+
+  const blog: RequiredTitle<Post> = {
+    title: "My Story",
+  };
 }
