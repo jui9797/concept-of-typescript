@@ -365,4 +365,19 @@ function test(v: unknown) {
   const blog: RequiredTitle<Post> = {
     title: "My Story",
   };
+
+  // Extract Keys Based on Value Type
+
+  type User3 = {
+    id: number;
+    name: string;
+    email: string;
+    verified: boolean;
+  };
+
+  type OnlyStringKeys<T> = {
+    [K in keyof T]: T[K] extends string ? K : never;
+  }[keyof T];
+
+  type Result = OnlyStringKeys<User3>; // "name" | "email"
 }
