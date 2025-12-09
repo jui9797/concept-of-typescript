@@ -380,4 +380,23 @@ function test(v: unknown) {
   }[keyof T];
 
   type Result = OnlyStringKeys<User3>; // "name" | "email"
+
+  // Recursive Type for Nested Comments
+
+  type Comment = {
+    id: number;
+    text: string;
+    replies?: Comment[];
+  };
+
+  const example: Comment = {
+    id: 1,
+    text: "This is a comment",
+    replies: [
+      {
+        id: 2,
+        text: "Nested reply",
+      },
+    ],
+  };
 }
