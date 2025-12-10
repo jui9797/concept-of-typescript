@@ -419,5 +419,31 @@ function test(v: unknown) {
     language: "English",
   };
 
-  // config.theme.dark = false ❌ Errorss
+  //Promise Chaining Return Type
+
+  type Awaited<T> = T extends Promise<infer R> ? R : T;
+
+  async function loadData() {
+    return { id: 10, status: "ok" };
+  }
+
+  type Result2 = Awaited<ReturnType<typeof loadData>>;
+
+  //Transform Tuple to Union
+  // type TupleToUnion<T extends any[]> = T[number];
+  // type Colors = TupleToUnion<["red", "green", "blue"]>;         // "red" | "green" | "blue"
+
+  //Type-Safe Event System
+
+  // type Events = {
+  //   login: { user: string; time: number };
+  //   logout: { user: string };
+  // };
+
+  // function emit<E extends keyof Events>(event: E, data: Events[E]) {
+  //   console.log(event, data);
+  // }
+
+  // emit("login", { user: "Jui", time: Date.now() });
+  // emit("logout", { time: 10 })  Wrong shape
 }
