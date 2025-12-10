@@ -399,4 +399,25 @@ function test(v: unknown) {
       },
     ],
   };
+
+  // : Deep Readonly Utility
+
+  type DeepReadonly<T> = {
+    readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
+  };
+
+  type Settings = {
+    theme: {
+      dark: boolean;
+      fontSize: number;
+    };
+    language: string;
+  };
+
+  const config: DeepReadonly<Settings> = {
+    theme: { dark: true, fontSize: 16 },
+    language: "English",
+  };
+
+  // config.theme.dark = false ❌ Errorss
 }
