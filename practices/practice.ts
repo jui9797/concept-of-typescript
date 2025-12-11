@@ -430,8 +430,8 @@ function test(v: unknown) {
   type Result2 = Awaited<ReturnType<typeof loadData>>;
 
   //Transform Tuple to Union
-  // type TupleToUnion<T extends any[]> = T[number];
-  // type Colors = TupleToUnion<["red", "green", "blue"]>;         // "red" | "green" | "blue"
+  type TupleToUnion<T extends any[]> = T[number];
+  type Colors = TupleToUnion<["red", "green", "blue"]>; // "red" | "green" | "blue"
 
   //Type-Safe Event System
 
@@ -446,4 +446,6 @@ function test(v: unknown) {
 
   // emit("login", { user: "Jui", time: Date.now() });
   // emit("logout", { time: 10 })  Wrong shape
+
+  //
 }
