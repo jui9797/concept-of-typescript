@@ -448,6 +448,21 @@ function test(v: unknown) {
 
   //Type-Safe Event System
 
+  type Events = {
+  login: { user: string; time: number };
+  logout: { user: string };
+};
+
+  
+function emit<E extends keyof Events>(event: E, data: Events[E]) {
+  console.log(event, data);
+}
+
+emit("login", { user: "Jui", time: Date.now() });
+// emit("logout", { time: 10 }) ❌ Wrong shape
+
+
+  
   /**
    * type Events = {
   login: { user: string; time: number };
