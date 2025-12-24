@@ -446,49 +446,30 @@ function test(v: unknown) {
 
   emit("login", { user: "Jui", time: Date.now() });
 
-  //Type-Safe Event System
+  // Overload Based on Array
 
-  /**
-   * type Events = {
-  login: { user: string; time: number };
-  logout: { user: string };
-};
+  function processArr(values: number[]): number;
+  function processArr(values: string[]): string;
+  function processArr(values: any[]) {
+    return typeof values[0] === "number"
+      ? values.reduce((a, b) => a + b, 0)
+      : values.join("");
+  }
 
-function emit<E extends keyof Events>(event: E, data: Events[E]) {
-  console.log(event, data);
-}
+  console.log(processArr([1, 2, 3])); // 6
+  console.log(processArr(["a", "b"])); // "ab"
 
-emit("login", { user: "Jui", time: Date.now() });
-// emit("logout", { time: 10 }) ❌ Wrong shape
+  // Function Argument Type from Object Keys
 
+  // const employee = {
+  //   name: "Karim",
+  //   role: "Developer",
+  //   salary: 50000,
+  // };
 
-Overload Based on Array
+  // function getProperty<K extends keyof typeof employee>(key: K) {
+  //   return employee[key];
+  // }
 
-function processArr(values: number[]): number;
-function processArr(values: string[]): string;
-function processArr(values: any[]) {
-  return typeof values[0] === "number"
-    ? values.reduce((a, b) => a + b, 0)
-    : values.join("");
-}
-
-console.log(processArr([1, 2, 3]));  // 6
-console.log(processArr(["a", "b"])); // "ab"
-
-
-Function Argument Type from Object Keys
-
-const employee = {
-  name: "Karim",
-  role: "Developer",
-  salary: 50000,
-};
-
-function getProperty<K extends keyof typeof employee>(key: K) {
-  return employee[key];
-}
-
-console.log(getProperty("role"));
-
-   */
+  // console.log(getProperty("role"));
 }
