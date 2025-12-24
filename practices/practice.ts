@@ -462,7 +462,7 @@ function test(v: unknown) {
   // Function Argument Type from Object Keys
 
   const employee = {
-    name: "Karim",
+    name: "Kabir",
     role: "Developer",
     salary: 50000,
   };
