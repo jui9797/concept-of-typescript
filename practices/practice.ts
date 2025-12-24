@@ -461,15 +461,15 @@ function test(v: unknown) {
 
   // Function Argument Type from Object Keys
 
-  // const employee = {
-  //   name: "Karim",
-  //   role: "Developer",
-  //   salary: 50000,
-  // };
+  const employee = {
+    name: "Karim",
+    role: "Developer",
+    salary: 50000,
+  };
 
-  // function getProperty<K extends keyof typeof employee>(key: K) {
-  //   return employee[key];
-  // }
+  function getProperty<K extends keyof typeof employee>(key: K) {
+    return employee[key];
+  }
 
-  // console.log(getProperty("role"));
+  console.log(getProperty("role"));
 }
