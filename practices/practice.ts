@@ -472,4 +472,11 @@ function test(v: unknown) {
   }
 
   console.log(getProperty("role"));
+
+  //Create a NonEmptyArray Type
+
+  type NonEmptyArray<T> = [T, ...T[]];
+
+  const nums: NonEmptyArray<number> = [1, 2, 3];
+  // const empty: NonEmptyArray<number> = [];  Error
 }
