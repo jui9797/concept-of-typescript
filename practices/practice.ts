@@ -479,4 +479,18 @@ function test(v: unknown) {
 
   const nums: NonEmptyArray<number> = [1, 2, 3];
   // const empty: NonEmptyArray<number> = [];  Error
+
+  //Make Specific Keys Optional
+  type NewUser = {
+    id: number;
+    name: string;
+    email: string;
+  };
+
+  type MakeOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
+  const user: MakeOptional<NewUser, "email"> = {
+    id: 1,
+    name: "Jui",
+  };
 }
