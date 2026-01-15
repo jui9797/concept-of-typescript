@@ -493,4 +493,11 @@ function test(v: unknown) {
     id: 1,
     name: "Jui",
   };
+
+  //Extract Function Parameters
+
+  function login(username: string, password: string) {}
+
+  type LoginParams = Parameters<typeof login>;
+  // [string, string]
 }
