@@ -1,5 +1,5 @@
 {
-  // Create a function that takes two numbers and returns their sum
+  //1. Create a function that takes two numbers and returns their sum
 
   function add(a: number, b: number): number {
     return a + b;
@@ -7,7 +7,7 @@
 
   console.log(add(5, 7)); // 12
 
-  // Create a type for a user and print the name
+  //2.  Create a type for a user and print the name
 
   type User = {
     name: string;
@@ -24,7 +24,7 @@
   console.log(user.name);
   // Jui
 
-  // Optional properties
+  //3. Optional properties
   type Car = {
     brand: string;
     model: string;
@@ -34,7 +34,7 @@
   const car1: Car = { brand: "Toyota", model: "Corolla" };
   const car2: Car = { brand: "Tesla", model: "X", color: "Black" };
 
-  //Create a function that accepts a union type
+  //4. Create a function that accepts a union type
 
   function printId(id: string | number) {
     console.log("ID:", id);
@@ -43,7 +43,7 @@
   printId(101);
   printId("A-22");
 
-  // Narrowing using typeof
+  //5. Narrowing using typeof
 
   function process(value: string | number) {
     if (typeof value === "string") {
@@ -53,7 +53,7 @@
     }
   }
 
-  // Generic function that returns the same value
+  //6. Generic function that returns the same value
 
   function identity<T>(value: T): T {
     return value;
@@ -62,7 +62,7 @@
   const a = identity<string>("Typescript");
   const b = identity<number>(100);
 
-  // Interface with method
+  //7. Interface with method
 
   interface BankAccount {
     balance: number;
@@ -79,7 +79,7 @@
   account.deposit(500);
   console.log(account.balance); // 1500
 
-  // Using readonly
+  //8. Using readonly
 
   type Student = {
     readonly id: number;
@@ -89,12 +89,12 @@
   const s1: Student = { id: 2, name: "Jannat" };
   // s1.id = 20;  error
 
-  // Tuple type
+  //9. Tuple type
   type Point = [number, number];
   const p1: Point = [10, 20];
   console.log(`X: ${p1[0]}, Y: ${p1[1]}`);
 
-  // Class + Access Modifiers
+  //10. Class + Access Modifiers
   class Person {
     public name: string;
     private age: number;
@@ -112,7 +112,7 @@
   const p2 = new Person("Jui", 20);
   p2.greet();
 
-  // Generic with Constraints
+  //11. Generic with Constraints
 
   function logLength<T extends { length: number }>(value: T) {
     return value.length;
@@ -121,7 +121,7 @@
   console.log(logLength("Hello"));
   console.log(logLength([1, 2, 3]));
 
-  // Make all properties optional (using utility types)
+  //12. Make all properties optional (using utility types)
 
   type User2 = {
     name: string;
@@ -135,7 +135,7 @@
     name: "Jui",
   };
 
-  // Pick specific properties
+  //13. Pick specific properties
   type Product = {
     id: number;
     name: string;
@@ -150,14 +150,14 @@
     price: 50000,
   };
 
-  //Record Utility Type
+  //14. Record Utility Type
 
   const scores: Record<string, number> = {
     Jui: 95,
     Rahim: 88,
   };
 
-  //Enum Example
+  //15. Enum Example
 
   enum OrderStatus {
     PENDING = "pending",
@@ -171,11 +171,7 @@
 
   printStatus(OrderStatus.SHIPPED);
 
-  // Tuple type
-
-  const student: [string, number] = ["Jui", 20];
-
-  // Function Overloading
+  //16.  Function Overloading
 
   function combine(a: number, b: number): number;
   function combine(a: string, b: string): string;
@@ -186,7 +182,7 @@
   console.log(combine(10, 20)); // 30
   console.log(combine("Hello ", "World")); // Hello World
 
-  // Class with inheritance
+  //17. Class with inheritance
 
   class Animal {
     constructor(public name: string) {}
@@ -205,11 +201,11 @@
   const d = new Dog("Tommy");
   d.sound();
 
-  // Readonly Array
+  //18. Readonly Array
 
   const numbers: readonly number[] = [10, 20, 30];
 
-  // Type Narrowing With in Operator const numbers: readonly number[] = [10, 20, 30];
+  //19. Type Narrowing With in Operator const numbers: readonly number[] = [10, 20, 30];
 
   type Student3 = { name: string; class: number };
   type Employee = { name: string; salary: number };
@@ -222,7 +218,7 @@
     }
   }
 
-  // Create a Custom Type Guard
+  //20. Create a Custom Type Guard
 
   function isString(value: unknown): value is string {
     return typeof value === "string";
