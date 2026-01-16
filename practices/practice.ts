@@ -500,4 +500,10 @@ function test(v: unknown) {
 
   type LoginParams = Parameters<typeof login>;
   // [string, string]
+
+  //Remove null and undefined
+
+  type Raw = string | null | undefined;
+
+  type Clean = NonNullable<Raw>; // string
 }
