@@ -9,19 +9,19 @@
 
   //2.  Create a type for a user and print the name
 
-  type User = {
+  type NewUser1 = {
     name: string;
     email: string;
     age: number;
   };
 
-  const user: User = {
+  const user1: NewUser1 = {
     name: "Jui",
     email: "jui@example.com",
     age: 20,
   };
 
-  console.log(user.name);
+  console.log(user1.name);
   // Jui
 
   //3. Optional properties
@@ -95,7 +95,7 @@
   console.log(`X: ${p1[0]}, Y: ${p1[1]}`);
 
   //10. Class + Access Modifiers
-  class Person {
+  class Person1 {
     public name: string;
     private age: number;
 
@@ -109,7 +109,7 @@
     }
   }
 
-  const p2 = new Person("Jui", 20);
+  const p2 = new Person1("Jui", 20);
   p2.greet();
 
   //11. Generic with Constraints
@@ -131,7 +131,7 @@
 
   type OptionalUser = Partial<User2>;
 
-  const u: OptionalUser = {
+  const u1: OptionalUser = {
     name: "Jui",
   };
 
@@ -145,9 +145,9 @@
 
   type BasicProduct = Pick<Product, "name" | "price">;
 
-  const p: BasicProduct = {
+  const prod: BasicProduct = {
     name: "Laptop",
-    price: 50000,
+    price: 1500,
   };
 
   //14. Record Utility Type
@@ -208,9 +208,9 @@
   //19. Type Narrowing With in Operator const numbers: readonly number[] = [10, 20, 30];
 
   type Student3 = { name: string; class: number };
-  type Employee = { name: string; salary: number };
+  type Employee1 = { name: string; salary: number };
 
-  function check(obj: Student3 | Employee) {
+  function check(obj: Student3 | Employee1) {
     if ("salary" in obj) {
       console.log("Employee Salary:", obj.salary);
     } else {
@@ -231,16 +231,8 @@
       console.log("Not a string");
     }
   }
-}
 
-function test(v: unknown) {
-  if (isString(v)) {
-    console.log(v.toUpperCase());
-  } else {
-    console.log("Not a string");
-  }
-
-  //Discriminated Union
+  //21. Discriminated Union
   type Circle = {
     kind: "circle";
     radius: number;
@@ -263,7 +255,7 @@ function test(v: unknown) {
     }
   }
 
-  // Mapped Type – Make all properties readonly
+  //22. Mapped Type – Make all properties readonly
 
   type ReadonlyAll<T> = {
     readonly [K in keyof T]: T[K];
@@ -279,7 +271,7 @@ function test(v: unknown) {
     age: 20,
   };
 
-  //keyof and Index Signature
+  //23. keyof and Index Signature
 
   function getValue<T, K extends keyof T>(obj: T, key: K) {
     return obj[key];
@@ -292,7 +284,7 @@ function test(v: unknown) {
 
   console.log(getValue(student, "name"));
 
-  // Intersection Types
+  //24. Intersection Types
 
   type Profile = { name: string };
   type Login = { email: string };
@@ -304,7 +296,7 @@ function test(v: unknown) {
     email: "jui@mail.com",
   };
 
-  //Optional Chaining + Nullish Coalescing
+  //25. Optional Chaining + Nullish Coalescing
 
   type Employee = {
     name: string;
@@ -320,7 +312,7 @@ function test(v: unknown) {
   const city = emp.address?.city ?? "Unknown";
   console.log(city);
 
-  // Promise with TypeScript
+  //26. Promise with TypeScript
 
   function fetchData(): Promise<string> {
     return new Promise((resolve) => {
@@ -330,14 +322,14 @@ function test(v: unknown) {
 
   fetchData().then((res) => console.log(res));
 
-  //Type-level Function
+  //27.Type-level Function
 
   type ElementType<T> = T extends (infer U)[] ? U : T;
 
   type A = ElementType<number[]>; // number
   type B = ElementType<string>; // string
 
-  //Infer return type of a function
+  //28. Infer return type of a function
 
   function getUser() {
     return {
@@ -348,7 +340,7 @@ function test(v: unknown) {
   }
   type ReturnTypeOfGetUser = ReturnType<typeof getUser>;
 
-  //Required + Partial Mix
+  //29. Required + Partial Mix
 
   type Post = {
     title?: string;
@@ -362,7 +354,7 @@ function test(v: unknown) {
     title: "My Story",
   };
 
-  // Extract Keys Based on Value Type
+  //30. Extract Keys Based on Value Type
 
   type User3 = {
     id: number;
@@ -377,7 +369,7 @@ function test(v: unknown) {
 
   type Result = OnlyStringKeys<User3>; // "name" | "email"
 
-  // Recursive Type for Nested Comments
+  //31. Recursive Type for Nested Comments
 
   type Comment = {
     id: number;
@@ -396,7 +388,7 @@ function test(v: unknown) {
     ],
   };
 
-  // : Deep Readonly Utility
+  //32.  Deep Readonly Utility
 
   type DeepReadonly<T> = {
     readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
@@ -415,7 +407,7 @@ function test(v: unknown) {
     language: "English",
   };
 
-  //Promise Chaining Return Type
+  //33. Promise Chaining Return Type
 
   type Awaited<T> = T extends Promise<infer R> ? R : T;
 
@@ -425,11 +417,11 @@ function test(v: unknown) {
 
   type Result2 = Awaited<ReturnType<typeof loadData>>;
 
-  //Transform Tuple to Union
+  //34. Transform Tuple to Union
   type TupleToUnion<T extends any[]> = T[number];
   type Colors = TupleToUnion<["red", "green", "blue"]>; // "red" | "green" | "blue"
 
-  //Type-Safe Event System
+  //35. Type-Safe Event System
 
   type Events = {
     login: { user: string; time: number };
@@ -442,7 +434,7 @@ function test(v: unknown) {
 
   emit("login", { user: "Jui", time: Date.now() });
 
-  // Overload Based on Array
+  //36.  Overload Based on Array
 
   function processArr(values: number[]): number;
   function processArr(values: string[]): string;
@@ -455,7 +447,7 @@ function test(v: unknown) {
   console.log(processArr([1, 2, 3])); // 6
   console.log(processArr(["a", "b"])); // "ab"
 
-  // Function Argument Type from Object Keys
+  //37. Function Argument Type from Object Keys
 
   const employee = {
     name: "Kabir",
@@ -469,14 +461,14 @@ function test(v: unknown) {
 
   console.log(getProperty("role"));
 
-  //Create a NonEmptyArray Type
+  //38. Create a NonEmptyArray Type
 
   type NonEmptyArray<T> = [T, ...T[]];
 
   const nums: NonEmptyArray<number> = [1, 2, 3];
   // const empty: NonEmptyArray<number> = [];  Error
 
-  //Make Specific Keys Optional
+  //39. Make Specific Keys Optional
   type NewUser = {
     id: number;
     name: string;
@@ -490,14 +482,14 @@ function test(v: unknown) {
     name: "Jui",
   };
 
-  //Extract Function Parameters
+  //40. Extract Function Parameters
 
   function login(username: string, password: string) {}
 
   type LoginParams = Parameters<typeof login>;
   // [string, string]
 
-  //Remove null and undefined
+  //41. Remove null and undefined
 
   type Raw = string | null | undefined;
 
