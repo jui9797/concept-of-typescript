@@ -494,4 +494,22 @@
   type Raw = string | null | undefined;
 
   type Clean = NonNullable<Raw>; // string
+
+  //API Response Wrapper
+
+  type ApiResponse<T> = {
+    data: T;
+    success: boolean;
+    message?: string;
+  };
+
+  type UserData = {
+    id: number;
+    name: string;
+  };
+
+  const response: ApiResponse<UserData> = {
+    data: { id: 1, name: "Jui" },
+    success: true,
+  };
 }
