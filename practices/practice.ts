@@ -512,4 +512,13 @@
     data: { id: 1, name: "Jui" },
     success: true,
   };
+
+  //Conditional Property Based on Flag
+
+  type UserRole = { isAdmin: true; permissions: string[] } | { isAdmin: false };
+
+  const admin: UserRole = {
+    isAdmin: true,
+    permissions: ["read", "write"],
+  };
 }
