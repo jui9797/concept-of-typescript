@@ -521,4 +521,18 @@
     isAdmin: true,
     permissions: ["read", "write"],
   };
+
+  //Convert Object Keys to Uppercase
+
+  type UppercaseKeys<T> = {
+    [K in keyof T as Uppercase<string & K>]: T[K];
+  };
+
+  type Person4 = {
+    name: string;
+    age: number;
+  };
+
+  type Result4 = UppercaseKeys<Person4>;
+  // { NAME: string; AGE: number }
 }
