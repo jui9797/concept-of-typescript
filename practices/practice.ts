@@ -495,7 +495,7 @@
 
   type Clean = NonNullable<Raw>; // string
 
-  //API Response Wrapper
+  //42. API Response Wrapper
 
   type ApiResponse<T> = {
     data: T;
@@ -513,7 +513,7 @@
     success: true,
   };
 
-  //Conditional Property Based on Flag
+  //43. Conditional Property Based on Flag
 
   type UserRole = { isAdmin: true; permissions: string[] } | { isAdmin: false };
 
@@ -522,7 +522,7 @@
     permissions: ["read", "write"],
   };
 
-  //Convert Object Keys to Uppercase
+  //44. Convert Object Keys to Uppercase
 
   type UppercaseKeys<T> = {
     [K in keyof T as Uppercase<string & K>]: T[K];
@@ -535,4 +535,18 @@
 
   type Result4 = UppercaseKeys<Person4>;
   // { NAME: string; AGE: number }
+
+  //45. Strongly Typed Config Object
+
+  type Config = {
+    port: number;
+    env: "dev" | "prod";
+  };
+
+  const config2: Config = {
+    port: 3000,
+    env: "dev",
+  };
+
+  // config.env = "test"; ❌ Error
 }
