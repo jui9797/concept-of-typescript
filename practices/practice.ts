@@ -549,4 +549,8 @@
   };
 
   // config.env = "test"; ❌ Error
+
+  //46. Template Literal Types
+  type EventName<T extends string> = `${T}Event`;
+  type ClickEvent = EventName<"click">; // "clickEvent"
 }
