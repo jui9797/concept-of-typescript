@@ -553,4 +553,9 @@
   //46. Template Literal Types
   type EventName<T extends string> = `${T}Event`;
   type ClickEvent = EventName<"click">; // "clickEvent"
+
+  //47. Flatten Nested Array Type
+  type Flatten<T> = T extends (infer U)[] ? Flatten<U> : T;
+
+  type A2 = Flatten<number[][][]>; // number
 }
