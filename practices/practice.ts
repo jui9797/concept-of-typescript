@@ -558,4 +558,21 @@
   type Flatten<T> = T extends (infer U)[] ? Flatten<U> : T;
 
   type A2 = Flatten<number[][][]>; // number
+
+  //48. Type-Safe Form Fields
+
+  type FormFields = {
+    email: string;
+    password: string;
+  };
+
+  function updateField<K extends keyof FormFields>(
+    field: K,
+    value: FormFields[K],
+  ) {
+    console.log(field, value);
+  }
+
+  updateField("email", "test@mail.com");
+  // updateField("email", 123); ❌ Error
 }
