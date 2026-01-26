@@ -575,4 +575,24 @@
 
   updateField("email", "test@mail.com");
   // updateField("email", 123); ❌ Error
+
+  //49. Create a DeepPartial Type
+
+  type DeepPartial<T> = {
+    [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+  };
+
+  type Profile2 = {
+    name: string;
+    address2: {
+      city: string;
+      zip: number;
+    };
+  };
+
+  const user4: DeepPartial<Profile2> = {
+    address2: {
+      city: "Dhaka",
+    },
+  };
 }
