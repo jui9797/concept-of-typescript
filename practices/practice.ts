@@ -595,4 +595,18 @@
       city: "Dhaka",
     },
   };
+
+  //50. Enforce At Least One Property
+
+  type AtLeastOne<T> = {
+    [K in keyof T]: Pick<T, K>;
+  }[keyof T];
+
+  type Filters = {
+    name?: string;
+    age?: number;
+  };
+
+  const f1: AtLeastOne<Filters> = { name: "Jui" };
+  // const f2: AtLeastOne<Filters> = {};  Error
 }
