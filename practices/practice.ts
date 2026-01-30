@@ -609,4 +609,15 @@
 
   const f1: AtLeastOne<Filters> = { name: "Jui" };
   // const f2: AtLeastOne<Filters> = {};  Error
+
+  //51. Convert Union to Intersection
+
+  type UnionToIntersection<U> = (
+    U extends any ? (x: U) => void : never
+  ) extends (x: infer R) => void
+    ? R
+    : never;
+
+  type Result3 = UnionToIntersection<{ a: string } | { b: number }>;
+  // { a: string } & { b: number }
 }
