@@ -620,4 +620,19 @@
 
   type Result3 = UnionToIntersection<{ a: string } | { b: number }>;
   // { a: string } & { b: number }
+
+  //52. Function That Accepts Exact Object Shape
+
+  type Exact<T, Shape> = T extends Shape
+    ? Exclude<keyof T, keyof Shape> extends never
+      ? T
+      : never
+    : never;
+
+  function createUser<T>(user: Exact<T, { name: string; age: number }>) {
+    return user;
+  }
+
+  createUser({ name: "Jui", age: 20 });
+  // createUser({ name: "Jui", age: 20, role: "admin" });
 }
