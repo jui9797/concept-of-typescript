@@ -656,4 +656,20 @@
   };
 
   type Keys = ReadonlyKeys<Example>; // "id"
+
+  //53. Strongly Typed Event Listener
+
+  type EventMap = {
+    click: { x: number; y: number };
+    submit: { formId: string };
+  };
+
+  class EventBus {
+    on<K extends keyof EventMap>(event: K, cb: (data: EventMap[K]) => void) {}
+
+    emit<K extends keyof EventMap>(event: K, data: EventMap[K]) {}
+  }
+
+  const bus = new EventBus();
+  bus.emit("click", { x: 10, y: 20 });
 }
