@@ -635,4 +635,25 @@
 
   createUser({ name: "Jui", age: 20 });
   // createUser({ name: "Jui", age: 20, role: "admin" });
+
+  //52 . Extract Readonly Keys
+
+  type ReadonlyKeys<T> = {
+    [K in keyof T]-?: IfEquals<
+      { [P in K]: T[K] },
+      { -readonly [P in K]: T[K] },
+      never,
+      K
+    >;
+  }[keyof T];
+
+  type IfEquals<X, Y, A, B> =
+    (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? A : B;
+
+  type Example = {
+    readonly id: number;
+    name: string;
+  };
+
+  type Keys = ReadonlyKeys<Example>; // "id"
 }
