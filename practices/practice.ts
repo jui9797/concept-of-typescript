@@ -672,4 +672,16 @@
 
   const bus = new EventBus();
   bus.emit("click", { x: 10, y: 20 });
+
+  //54. Safe JSON Parse Function
+  function safeParse<T>(json: string): T | null {
+    try {
+      return JSON.parse(json) as T;
+    } catch {
+      return null;
+    }
+  }
+
+  type User5 = { id: number; name: string };
+  const data = safeParse<User5>('{"id":1,"name":"Jui"}');
 }
