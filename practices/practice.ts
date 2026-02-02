@@ -684,4 +684,14 @@
 
   type User5 = { id: number; name: string };
   const data = safeParse<User5>('{"id":1,"name":"Jui"}');
+
+  //55. Make Function Parameters Optional
+
+  type OptionalParams<T extends (...args: any) => any> = (
+    ...args: Partial<Parameters<T>>
+  ) => ReturnType<T>;
+
+  function send(email: string, message: string) {}
+
+  type OptionalSend = OptionalParams<typeof send>;
 }
