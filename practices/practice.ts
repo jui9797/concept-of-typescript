@@ -694,4 +694,9 @@
   function send(email: string, message: string) {}
 
   type OptionalSend = OptionalParams<typeof send>;
+
+  //56. Tuple Length as Type
+  type Length<T extends readonly any[]> = T["length"];
+
+  type L = Length<[1, 2, 3]>; // 3
 }
