@@ -699,4 +699,13 @@
   type Length<T extends readonly any[]> = T["length"];
 
   type L = Length<[1, 2, 3]>; // 3
+
+  //Type-Safe Object Merge
+
+  function merge<T, U>(a: T, b: U): T & U {
+    return { ...a, ...b };
+  }
+
+  const merged = merge({ name: "Jui" }, { age: 20 });
+  // { name: string; age: number }
 }
