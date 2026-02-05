@@ -725,4 +725,15 @@
     : A["length"];
 
   type L2 = Length2<[1, 2, 3, 4]>; // 4
+
+  //String Length Type
+
+  type StringLength<
+    S extends string,
+    A extends any[] = [],
+  > = S extends `${infer _}${infer Rest}`
+    ? StringLength<Rest, [any, ...A]>
+    : A["length"];
+
+  type Len = StringLength<"hello">; // 5
 }
