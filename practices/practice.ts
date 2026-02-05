@@ -700,7 +700,7 @@
 
   type L = Length<[1, 2, 3]>; // 3
 
-  //Type-Safe Object Merge
+  //57. Type-Safe Object Merge
 
   function merge<T, U>(a: T, b: U): T & U {
     return { ...a, ...b };
@@ -708,4 +708,21 @@
 
   const merged = merge({ name: "Jui" }, { age: 20 });
   // { name: string; age: number }
+
+  type ButtonProps = {
+    label: string;
+    onClick: () => void;
+    disabled?: boolean;
+  };
+
+  //58. Tuple Length (Recursive)
+
+  type Length2<T extends any[], A extends any[] = []> = T extends [
+    infer _,
+    ...infer Rest,
+  ]
+    ? Length2<Rest, [any, ...A]>
+    : A["length"];
+
+  type L2 = Length2<[1, 2, 3, 4]>; // 4
 }
