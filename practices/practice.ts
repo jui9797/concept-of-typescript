@@ -726,7 +726,7 @@
 
   type L2 = Length2<[1, 2, 3, 4]>; // 4
 
-  //String Length Type
+  //59. String Length Type
 
   type StringLength<
     S extends string,
@@ -736,4 +736,12 @@
     : A["length"];
 
   type Len = StringLength<"hello">; // 5
+
+  //60. Reverse a Tuple
+
+  type Reverse<T extends any[]> = T extends [infer F, ...infer R]
+    ? [...Reverse<R>, F]
+    : [];
+
+  type R = Reverse<[1, 2, 3]>;
 }
