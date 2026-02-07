@@ -744,4 +744,13 @@
     : [];
 
   type R = Reverse<[1, 2, 3]>;
+
+  //61. Build a Tuple of Length N
+
+  type BuildTuple<
+    L extends number,
+    T extends any[] = [],
+  > = T["length"] extends L ? T : BuildTuple<L, [...T, any]>;
+
+  type Three = BuildTuple<3>;
 }
