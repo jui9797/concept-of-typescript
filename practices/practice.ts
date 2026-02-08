@@ -753,4 +753,12 @@
   > = T["length"] extends L ? T : BuildTuple<L, [...T, any]>;
 
   type Three = BuildTuple<3>;
+
+  //62. Add Two Numbers (Type-Level)
+  type Add<A extends number, B extends number> = [
+    ...BuildTuple<A>,
+    ...BuildTuple<B>,
+  ]["length"];
+
+  type Sum = Add<2, 3>; // 5
 }
