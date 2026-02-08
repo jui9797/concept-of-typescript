@@ -761,4 +761,10 @@
   ]["length"];
 
   type Sum = Add<2, 3>; // 5
+
+  //63. Subtract Two Numbers (Type-Level)
+
+  type Subtract<A extends number, B extends number> =
+    BuildTuple<A> extends [...BuildTuple<B>, ...infer R] ? R["length"] : never;
+  type Diff = Subtract<5, 2>; // 3
 }
