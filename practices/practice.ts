@@ -770,7 +770,25 @@
 
   // DeepPartial
 
-  type DeepPartial<T> = {
-    [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+  type DeepPartial2<T> = {
+    [K in keyof T]?: T[K] extends object ? DeepPartial2<T[K]> : T[K];
   };
+
+  //64. Object Path (Dot Notation)
+
+  type Paths<T> = {
+    [K in keyof T]: T[K] extends object
+      ? `${K & string}` | `${K & string}.${Paths<T[K]>}`
+      : `${K & string}`;
+  }[keyof T];
+
+  type Obj = {
+    user: {
+      address: {
+        city: string;
+      };
+    };
+  };
+
+  type P = Paths<Obj>;
 }
