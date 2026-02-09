@@ -767,4 +767,10 @@
   type Subtract<A extends number, B extends number> =
     BuildTuple<A> extends [...BuildTuple<B>, ...infer R] ? R["length"] : never;
   type Diff = Subtract<5, 2>; // 3
+
+  // DeepPartial
+
+  type DeepPartial<T> = {
+    [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+  };
 }
