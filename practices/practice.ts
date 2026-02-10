@@ -791,4 +791,15 @@
   };
 
   type P = Paths<Obj>;
+
+  //65. Deep Value Access
+  type PathValue<T, P extends string> = P extends `${infer K}.${infer Rest}`
+    ? K extends keyof T
+      ? PathValue<T[K], Rest>
+      : never
+    : P extends keyof T
+      ? T[P]
+      : never;
+
+  type V = PathValue<Obj, "user.address.city">; // string
 }
