@@ -802,4 +802,10 @@
       : never;
 
   type V = PathValue<Obj, "user.address.city">; // string
+
+  //66. Remove Deep Readonly
+
+  type Mutable<T> = {
+    -readonly [K in keyof T]: T[K] extends object ? Mutable<T[K]> : T[K];
+  };
 }
